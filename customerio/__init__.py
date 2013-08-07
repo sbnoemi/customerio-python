@@ -4,7 +4,7 @@ import base64
 import urllib
 from httplib import HTTPSConnection
 
-VERSION = (0, 1, 2, 'final', 0)
+VERSION = (0, 1, 3, 'final', 0)
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
@@ -49,7 +49,6 @@ class CustomerIO(object):
         headers = {
             'Authorization': 'Basic %s' % basic_auth,
             'Content-Type': 'application/json',
-            'Content-Length': len(data),
         }
         http.request(method, query_string, data, headers)
         result_status = http.getresponse().status
