@@ -4,7 +4,7 @@ import base64
 import urllib
 from httplib import HTTPSConnection
 
-VERSION = (0, 1, 4, 'final', 0)
+VERSION = (0, 1, 5, 'final', 0)
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
@@ -63,7 +63,6 @@ class CustomerIO(object):
         url = self.get_event_query_string(customer_id)
         encoded_data = {
             'name': name,
+            'data': data
         }
-        for key, value in data.iteritems():
-            encoded_data['data[%s]' % key] = value
         self.send_request('POST', url, encoded_data)
